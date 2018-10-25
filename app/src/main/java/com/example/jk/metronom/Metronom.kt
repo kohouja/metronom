@@ -26,12 +26,7 @@ class Metronom : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_metronom)
 
-        while(started === true){
-//            do metronome action
-        }
         initListeners()
-
-
     }
     /**
      * listeners
@@ -61,6 +56,11 @@ class Metronom : AppCompatActivity() {
     fun noVisibility(){
         bl0.visibility = GONE
         bl1.visibility = GONE
+        bl2.visibility = GONE
+        bl3.visibility = GONE
+        bl4.visibility = GONE
+        bl5.visibility = GONE
+        bl6.visibility = GONE
     }
 
     fun increment(view: View){
