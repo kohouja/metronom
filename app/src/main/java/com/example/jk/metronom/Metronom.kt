@@ -14,54 +14,60 @@ import android.widget.EditText
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_metronom.*
 import kotlin.math.absoluteValue
-
-
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
+import android.view.LayoutInflater
+import com.example.jk.metronom.databinding.ActivityMetronomBinding
 
 
 class Metronom : AppCompatActivity() {
 
+
     private var started = false
-    private var viewController: ViewController = ViewController()
+
+    private lateinit var binding: ActivityMetronomBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_metronom)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_metronom)
+        binding.viewModel = MetronomViewModel()
 
-        initListeners()
+//        initListeners()
     }
-    /**
-     * listeners
-     */
-    fun initListeners(){
-        time1Input.addTextChangedListener(object : TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-               if(!time1Input.text.isEmpty()){
-                   val time1Value: Int? = time1Input.text.toString().toIntOrNull()
-//                    Log.d("time1Value",time1Value?.toString()?:"")
-                   Log.d("time1Value", ""+time1Value)
-                   if (time1Value == 1){
-                       noVisibility()
-                   }
-               }
-            }
-        })
-    }
-    fun noVisibility(){
-        bl0.visibility = GONE
-        bl1.visibility = GONE
-        bl2.visibility = GONE
-        bl3.visibility = GONE
-        bl4.visibility = GONE
-        bl5.visibility = GONE
-        bl6.visibility = GONE
-    }
+//    /**
+//     * listeners
+//     */
+//    fun initListeners(){
+//        time1Input.addTextChangedListener(object : TextWatcher{
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//
+//            }
+//
+//            override fun afterTextChanged(s: Editable?) {
+//               if(!time1Input.text.isEmpty()){
+//                   val time1Value: Int? = time1Input.text.toString().toIntOrNull()
+////                    Log.d("time1Value",time1Value?.toString()?:"")
+//                   Log.d("time1Value", ""+time1Value)
+//                   if (time1Value == 1){
+//                       noVisibility()
+//                   }
+//               }
+//            }
+//        })
+//    }
+//    fun noVisibility(){
+//        bl0.visibility = GONE
+//        bl1.visibility = GONE
+//        bl2.visibility = GONE
+//        bl3.visibility = GONE
+//        bl4.visibility = GONE
+//        bl5.visibility = GONE
+//        bl6.visibility = GONE
+//    }
 
     fun increment(view: View){
         bpmInput.apply {
